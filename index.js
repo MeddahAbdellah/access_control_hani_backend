@@ -25,9 +25,15 @@ server.on('published', function(packet, client) {
           if(result.length>0)valid=true;
           var sqlData={key:data[0],valid:valid,date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
           console.log(sqlData);
+          var name = "Unknown";
+          var surname = "Unknown";
+          if( result.length>0 ){
+            name = result[0].name;
+            surname = result[0].surname;
+          }
           var message = {
   					topic: "newEntry",
-  					payload: result[0].name == undefined ? "Unknown":result[0].name+','+result[0].surname== undefined ? "Unknown":result[0].surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
+  					payload: ? name+','+surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
   					qos: 0,
   					retain: false
   				};
