@@ -105,7 +105,7 @@ app.get('/', (req, res) => {
 });
 app.get('/getControlData',(req,res)=>{
   var selectDate = req.query.selectDate;
-  connection.query('SELECT users.name,users.surname,controldata.key,controldata.date,controldata.valid From users RIGHT JOIN controldata ON controldata.key = users.key where controldata.date BETWEEN "'+selectDate+' 00:00:00" AND "'+selectDate+' 23:59:59 ORDER BY controldata.date ASC"', function (error, results, fields) {
+  connection.query('SELECT users.name,users.surname,controldata.key,controldata.date,controldata.valid From users RIGHT JOIN controldata ON controldata.key = users.key where controldata.date BETWEEN "'+selectDate+' 00:00:00" AND "'+selectDate+' 23:59:59 ORDER BY controldata.date DESC"', function (error, results, fields) {
     if (error) throw error;
     res.send(results);
   });
