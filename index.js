@@ -24,7 +24,7 @@ server.on('published', function(packet, client) {
           if (err) throw err;
           var valid=false;
           if(results.length>0)valid=true;
-          var sqlData={key:data[0],valid:,date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
+          var sqlData={key:data[0],valid:valid,date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
           console.log(sqlData);
           connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
             if (err) throw err;
