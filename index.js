@@ -18,13 +18,19 @@ server.on('clientConnected', function(client) {
 server.on('published', function(packet, client) {
       //  console.log(packet);
       if(packet.topic.toString().includes("data")){
-
         var data = packet.payload.toString().split(',');
-        var sqlData={key:data[0],valid:data[1],date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
-        console.log(sqlData);
-        connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
+        var keySQL={key:data[0]};
+        connection.query('SELECT key FROM users WHERE ?',keySQL, function(err, result) {
           if (err) throw err;
+          var valid=false;
+          if(results.length>0)valid=true;
+          var sqlData={key:data[0],valid:,date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
+          console.log(sqlData);
+          connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
+            if (err) throw err;
+          });
         });
+
       }
 });
 server.on('ready', setup);
