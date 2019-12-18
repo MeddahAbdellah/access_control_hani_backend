@@ -27,7 +27,7 @@ server.on('published', function(packet, client) {
           console.log(sqlData);
           var message = {
   					topic: "newEntry",
-  					payload: result[0].name+','+result[0].surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
+  					payload: result[0].name == undefined ? "Unknown":result[0].name+','+result[0].surname== undefined ? "Unknown":result[0].surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
   					qos: 0,
   					retain: false
   				};
