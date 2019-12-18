@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `controldata`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `controldata`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `controldata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  PRIMARY KEY (`key`),
-  UNIQUE KEY `key_UNIQUE` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `date` datetime NOT NULL,
+  `valid` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `controldata`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('AQM4DS6Q','hanes','looki'),('F7SD544L','Mouloud','Fateh'),('FSD4DS6Q','Abdallah','Meddah'),('LSDD444L','siki','flamel');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `controldata` WRITE;
+/*!40000 ALTER TABLE `controldata` DISABLE KEYS */;
+INSERT INTO `controldata` VALUES (1,'LSDD444L','2019-12-17 23:38:18',0),(2,'LSDD444L','2019-12-17 23:38:21',1),(3,'LSDD444L','2019-12-17 23:38:25',1);
+/*!40000 ALTER TABLE `controldata` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-18 16:03:53
+-- Dump completed on 2019-12-18 16:10:41
