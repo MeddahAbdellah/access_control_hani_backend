@@ -25,8 +25,10 @@ server.on('published', function(packet, client) {
           if(result.length>0)valid=true;
           var sqlData={key:data[0],valid:valid,date:new Date().toISOString().slice(0, 19).replace('T', ' ')};
           console.log(sqlData);
+          server.publish("newEntry",result[0].name+','+result[0].surname+','+data[0]+','+sqlData.date+','sqlData.valid);
           connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
             if (err) throw err;
+
           });
         });
 
