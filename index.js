@@ -5,7 +5,7 @@ const mosca      = require("mosca");
 const bodyParser = require('body-parser');
 
 var server = new mosca.Server({
-      port:8088,
+      port:8080,
       http: {
               port: 9000,
               bundle: true,
@@ -94,6 +94,6 @@ app.post('/addCard',(req,res)=>{
 });
 
 
-app.listen(8080, () => {
-  console.log('app listening on port 8080!')
+app.listen(80, () => {
+  console.log('app listening on port 80!')
 });
