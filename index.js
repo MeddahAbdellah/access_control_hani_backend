@@ -33,7 +33,7 @@ server.on('published', function(packet, client) {
           }
           var message = {
   					topic: "newEntry",
-  					payload: ? name+','+surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
+  					payload: name+','+surname+','+data[0]+','+sqlData.date+','+sqlData.valid,
   					qos: 0,
   					retain: false
   				};
