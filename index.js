@@ -16,7 +16,7 @@ server.on('clientConnected', function(client) {
         console.log('client connected', client.id);
 });
 server.on('published', function(packet, client) {
-       console.log(packet);
+       //console.log(packet);
       if(packet.topic.toString().includes("data")){
         var data = packet.payload.toString().split(',');
         connection.query('SELECT * FROM users WHERE users.key="'+data[0]+'"', function(err, result) {
@@ -31,7 +31,7 @@ server.on('published', function(packet, client) {
   					qos: 0,
   					retain: false
   				};
-  				server.publish(message,function(){console.log("STARTED SESSION");});
+  				server.publish(message,function(){});
           connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
             if (err) throw err;
 
