@@ -19,7 +19,7 @@ server.on('published', function(packet, client) {
       //  console.log(packet);
       if(packet.topic.toString().includes("data")){
         var data = packet.payload.toString().split(',');
-        connection.query('SELECT * FROM users WHERE users.key="'+data[0]+'"',keySQL, function(err, result) {
+        connection.query('SELECT * FROM users WHERE users.key="'+data[0]+'"', function(err, result) {
           if (err) throw err;
           var valid=false;
           if(results.length>0)valid=true;
