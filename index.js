@@ -38,13 +38,6 @@ server.on('published', function(packet, client) {
   					retain: false
   				};
   				server.publish(message,function(){});
-          var controlMessage = {
-  					topic: "control",
-  					payload: sqlData.valid?"1":"0",
-  					qos: 0,
-  					retain: false
-  				};
-          server.publish(controlMessage,function(){});
           connection.query('INSERT INTO controldata SET ?', sqlData, function(err, result) {
             if (err) throw err;
 
